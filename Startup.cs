@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IStore_Ecommerce.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace IStore_Ecommerce
 {
@@ -23,6 +25,8 @@ namespace IStore_Ecommerce
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(option =>
+         option.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
             services.AddControllersWithViews();
         }
 
